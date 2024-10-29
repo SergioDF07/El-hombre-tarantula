@@ -19,8 +19,8 @@ class Personaje {
         return this.vida_hp > 0;
     }
 
-    public void recibirDanio(int danio) {
-        this.vida_hp -= danio;
+    public void recibirDaño(int daño) {
+        this.vida_hp -= daño;
         if (this.vida_hp < 0) {
             this.vida_hp = 0;
         }
@@ -43,20 +43,20 @@ class SuperHero extends Personaje {
 
     public void ataqueEspecial(Personaje villano) {
         System.out.println(nombre + " usa su ataque especial: ¡Lanzar Telaraña!");
-        int danio = fuerza + 15; // El ataque especial hace más daño
-        villano.recibirDanio(danio);
-        System.out.println(villano.nombre + " ha recibido " + danio + " de daño.");
+        int daño = fuerza + 15; // El ataque especial hace más daño
+        villano.recibirDaño(daño);
+        System.out.println(villano.nombre + " ha recibido " + daño + " de daño.");
     }
 
     public void atacar(Personaje villano) {
         System.out.println(nombre + " ataca a " + villano.nombre);
-        villano.recibirDanio(fuerza);
+        villano.recibirDaño(fuerza);
         System.out.println(villano.nombre + " ha recibido " + fuerza + " de daño.");
     }
 
-    public void defender(int danio) {
+    public void defender(int daño) {
         System.out.println(nombre + " se defiende, reduciendo el daño a la mitad.");
-        this.recibirDanio(danio / 2);
+        this.recibirDaño(daño / 2);
     }
 
     public void recuperarse() {
@@ -79,19 +79,19 @@ class Villano extends Personaje {
         if (habilidad == 0) {
             System.out.println(nombre + " usa su ataque especial: ¡Ataque duplicado!");
             int daño = fuerza * 2;
-            heroe.recibirDanio(daño);
+            heroe.recibirDaño(daño);
             System.out.println(heroe.nombre + " ha recibido " + daño + " de daño.");
         } else {
             System.out.println(nombre + " usa su ataque especial: ¡Trampa sucia!");
             int daño = fuerza + 10;
-            heroe.recibirDanio(daño);
+            heroe.recibirDaño(daño);
             System.out.println(heroe.nombre + " ha recibido " + daño + " de daño.");
         }
     }
 
     public void atacar(Personaje heroe) {
         System.out.println(nombre + " ataca a " + heroe.nombre);
-        heroe.recibirDanio(fuerza);
+        heroe.recibirDaño(fuerza);
         System.out.println(heroe.nombre + " ha recibido " + fuerza + " de daño.");
     }
 }
